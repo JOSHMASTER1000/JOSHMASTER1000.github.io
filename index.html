@@ -1,6 +1,152 @@
-<h1> LAGU HIDUP JOKOWI</h1>
-<h2>
-Terima kasih Pak Jokowi Ribuan desa telah kau datangi Kau menyemangati, kau memberi arti Untuk negeri
-Terima kasih Pak Jokowi Hanya Tuhan yang mampu membalasi Kebaikan hati yang selalu kau beri Untuk negeri
-</h2>
-<h3>OTW GIBRAN RAWR KA BOOMING </h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joshua | Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body { background: #f5f5f5; color: #222; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header img { height: 50px; }
+    nav ul { display: flex; gap: 25px; list-style: none; }
+    nav a { text-decoration: none; font-weight: 600; color: #333; transition: 0.3s; }
+    nav a:hover { color: #0078ff; }
+
+    main { padding: 60px; text-align: center; }
+
+    .hero {
+      background: linear-gradient(135deg, #0078ff, #00c3ff);
+      padding: 100px 20px;
+      color: #fff;
+      border-radius: 12px;
+      margin-bottom: 50px;
+    }
+
+    .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+    .hero p { font-size: 1.2rem; opacity: 0.9; }
+
+    .section { margin-top: 60px; }
+    .section h2 { margin-bottom: 20px; font-size: 2rem; }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover { transform: translateY(-5px); }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      max-height: 180px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      background: #eaeaea;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="#home"><img src="assets/jok.jpeg" alt="Logo Juleshwa" /></a>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#apps">Hobbies</a></li>
+        <li><a href="#games">Likes</a></li>
+        <li><a href="#teaching">Dislikes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <h1>Welcome to My Portfolio</h1>
+      <p>Showcasing my apps, games, and teaching projects.</p>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <p>Hello! I'm Joshua, a developer who creates apps, games, and educational tools.</p>
+    </section>
+
+    <section id="apps" class="section">
+      <h2>Hobbies</h2>
+      <div class="card-container">
+        <div class="card"><img src="assets/singing.jpeg" alt="Singing"><p>Singing</p></div>
+        <div class="card"><img src="assets/badminton.jpeg" alt="Badminton"><p>Badminton</p></div>
+        <div class="card"><img src="assets/maths.jpeg" alt="Maths"><p>Doing Maths</p></div>
+      </div>
+    </section>
+
+    <section id="games" class="section">
+      <h2>Likes</h2>
+      <div class="card-container">
+        <div class="card"><img src="assets/eating.jpeg" alt="Eating"><p>Eating</p></div>
+        <div class="card"><img src="assets/sleeping.jpeg" alt="Sleeping"><p>Sleeping</p></div>
+        <div class="card"><img src="assets/gaming.jpeg" alt="Gaming"><p>Playing Games</p></div>
+      </div>
+    </section>
+
+    <section id="teaching" class="section">
+      <h2>Dislikes</h2>
+      <div class="card-container">
+        <div class="card"><img src="assets/homework.jpeg" alt="Homework"><p>Homework</p></div>
+        <div class="card"><img src="assets/job.jpeg" alt="Job"><p>Job</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 JOSHUA CERTIFIED INC. All Rights Reserved.</footer>
+
+  <script>
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
