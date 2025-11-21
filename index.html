@@ -87,7 +87,7 @@
 
 <body>
   <header>
-    <a href="#home"><img src="assets/jok.jpeg" alt="Logo Juleshwa" /></a>
+    <a href="#home"><img src="assets/jok.jpeg" alt="Logo Joshua" /></a>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
@@ -95,6 +95,9 @@
         <li><a href="#apps">Hobbies</a></li>
         <li><a href="#games">Likes</a></li>
         <li><a href="#teaching">Dislikes</a></li>
+
+        <!-- THIS IS THE JOIN BUTTON YOU WANT TO WORK -->
+        <li><a href="join.html" id="joinButton" style="color:#0078ff; font-weight:700;">Join</a></li>
       </ul>
     </nav>
   </header>
@@ -139,14 +142,23 @@
 
   <footer>© 2025 JOSHUA CERTIFIED INC. All Rights Reserved.</footer>
 
+  <!-- FIXED JAVASCRIPT -->
   <script>
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth' });
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+
+        // INTERNAL LINKS → smooth scroll
+        if (href.startsWith("#")) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) target.scrollIntoView({ behavior: "smooth" });
+        }
+
+        // EXTERNAL LINKS (join.html) → DO NOT prevent default
       });
     });
   </script>
+
 </body>
 </html>
