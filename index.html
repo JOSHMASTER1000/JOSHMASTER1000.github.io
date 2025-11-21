@@ -8,32 +8,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body { background: #f5f5f5; color: #222; }
 
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: #ffffff;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px; background: #ffffff;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
     }
 
-    header img {
-      height: 50px;
-      cursor: pointer;
-    }
-
+    header img { height: 50px; cursor: pointer; }
     nav ul { display: flex; gap: 25px; list-style: none; }
     nav a { text-decoration: none; font-weight: 600; color: #333; transition: 0.3s; }
     nav a:hover { color: #0078ff; }
@@ -42,10 +27,8 @@
 
     .hero {
       background: linear-gradient(135deg, #0078ff, #00c3ff);
-      padding: 100px 20px;
-      color: #fff;
-      border-radius: 12px;
-      margin-bottom: 50px;
+      padding: 100px 20px; color: #fff;
+      border-radius: 12px; margin-bottom: 50px;
     }
 
     .hero h1 { font-size: 3rem; margin-bottom: 10px; }
@@ -61,8 +44,7 @@
     }
 
     .card {
-      background: #fff;
-      padding: 20px;
+      background: #fff; padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       transition: 0.3s;
@@ -71,63 +53,33 @@
     .card:hover { transform: translateY(-5px); }
 
     .card img {
-      width: 100%;
-      height: auto;
-      max-height: 180px;
-      object-fit: contain;
-      border-radius: 8px;
+      width: 100%; height: auto; max-height: 180px;
+      object-fit: contain; border-radius: 8px;
       margin-bottom: 12px;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-      background: #eaeaea;
-      color: #555;
-    }
+    footer { text-align: center; padding: 20px; margin-top: 50px; background: #eaeaea; color: #555; }
 
-    /* FULLSCREEN POPUP VIDEO */
     #videoModal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
+      display: none; position: fixed; z-index: 2000;
+      left: 0; top: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
+      justify-content: center; align-items: center;
     }
 
-    #videoModal video {
-      width: 80%;
-      max-width: 900px;
-      border-radius: 10px;
-    }
-
-    #closeBtn {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 40px;
-      color: #fff;
-      cursor: pointer;
-      user-select: none;
-    }
+    #videoModal video { width: 80%; max-width: 900px; border-radius: 10px; }
+    #closeBtn { position: absolute; top: 20px; right: 30px; font-size: 40px; color: #fff; cursor: pointer; user-select: none; }
   </style>
 </head>
 
 <body>
   <header>
-    <!-- CLICK THIS IMAGE → POPUP VIDEO -->
     <img id="logoVideo" src="assets/jok.jpeg" alt="Logo Joshua" />
-
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#apps">Hobbies</a></li>
         <li><a href="#games">Likes</a></li>
         <li><a href="#teaching">Dislikes</a></li>
@@ -145,6 +97,16 @@
     <section id="about" class="section">
       <h2>About Me</h2>
       <p>Hello! I'm Joshua, a developer who creates apps, games, and educational tools.</p>
+    </section>
+
+    <!-- EDUCATION SECTION ADDED HERE -->
+    <section id="education" class="section">
+      <h2>My Education</h2>
+      <div class="card-container">
+        <div class="card"><img src="assets/sd.jpeg" alt="SD"><p>SD (Elementary School)</p></div>
+        <div class="card"><img src="assets/sd.jpeg" alt="SMP"><p>SMP (Middle School)</p></div>
+        <div class="card"><img src="assets/sma.jpg" alt="SMA"><p>SMA (High School)</p></div>
+      </div>
     </section>
 
     <section id="apps" class="section">
@@ -176,7 +138,6 @@
 
   <footer>© 2025 JOSHUA CERTIFIED INC. All Rights Reserved.</footer>
 
-  <!-- VIDEO POPUP MODAL -->
   <div id="videoModal">
     <span id="closeBtn">&times;</span>
     <video id="popupVideo" controls>
@@ -185,7 +146,6 @@
   </div>
 
   <script>
-    // smooth scrolling for nav links
     document.querySelectorAll('nav a').forEach(link => {
       if (link.getAttribute("href").startsWith("#")) {
         link.addEventListener('click', function(e) {
@@ -196,23 +156,13 @@
       }
     });
 
-    // popup video modal
     const logo = document.getElementById("logoVideo");
     const modal = document.getElementById("videoModal");
     const video = document.getElementById("popupVideo");
     const closeBtn = document.getElementById("closeBtn");
 
-    logo.onclick = () => {
-      modal.style.display = "flex";
-      video.play();
-    };
-
-    closeBtn.onclick = () => {
-      modal.style.display = "none";
-      video.pause();
-      video.currentTime = 0;
-    };
-
+    logo.onclick = () => { modal.style.display = "flex"; video.play(); };
+    closeBtn.onclick = () => { modal.style.display = "none"; video.pause(); video.currentTime = 0; };
     modal.onclick = (e) => {
       if (e.target === modal) {
         modal.style.display = "none";
