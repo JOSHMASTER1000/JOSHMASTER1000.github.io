@@ -29,7 +29,11 @@
       z-index: 1000;
     }
 
-    header img { height: 50px; }
+    header img {
+      height: 50px;
+      cursor: pointer;
+    }
+
     nav ul { display: flex; gap: 25px; list-style: none; }
     nav a { text-decoration: none; font-weight: 600; color: #333; transition: 0.3s; }
     nav a:hover { color: #0078ff; }
@@ -82,12 +86,44 @@
       background: #eaeaea;
       color: #555;
     }
+
+    /* FULLSCREEN POPUP VIDEO */
+    #videoModal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #videoModal video {
+      width: 80%;
+      max-width: 900px;
+      border-radius: 10px;
+    }
+
+    #closeBtn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+    }
   </style>
 </head>
 
 <body>
   <header>
-    <a href="#home"><img src="assets/jok.jpeg" alt="Logo Joshua" /></a>
+    <!-- CLICK THIS IMAGE → POPUP VIDEO -->
+    <img id="logoVideo" src="assets/jok.jpeg" alt="Logo Joshua" />
+
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
@@ -95,9 +131,7 @@
         <li><a href="#apps">Hobbies</a></li>
         <li><a href="#games">Likes</a></li>
         <li><a href="#teaching">Dislikes</a></li>
-
-        <!-- THIS IS THE JOIN BUTTON YOU WANT TO WORK -->
-        <li><a href="join.html" id="joinButton" style="color:#0078ff; font-weight:700;">Join</a></li>
+        <li><a href="join.html" style="color:#0078ff; font-weight:700;">Join</a></li>
       </ul>
     </nav>
   </header>
@@ -142,22 +176,50 @@
 
   <footer>© 2025 JOSHUA CERTIFIED INC. All Rights Reserved.</footer>
 
-  <!-- FIXED JAVASCRIPT -->
+  <!-- VIDEO POPUP MODAL -->
+  <div id="videoModal">
+    <span id="closeBtn">&times;</span>
+    <video id="popupVideo" controls>
+      <source src="assets/video.mp4" type="video/mp4">
+    </video>
+  </div>
+
   <script>
-    document.querySelectorAll("nav a").forEach(link => {
-      link.addEventListener("click", function (e) {
-        const href = this.getAttribute("href");
-
-        // INTERNAL LINKS → smooth scroll
-        if (href.startsWith("#")) {
+    // smooth scrolling for nav links
+    document.querySelectorAll('nav a').forEach(link => {
+      if (link.getAttribute("href").startsWith("#")) {
+        link.addEventListener('click', function(e) {
           e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) target.scrollIntoView({ behavior: "smooth" });
-        }
-
-        // EXTERNAL LINKS (join.html) → DO NOT prevent default
-      });
+          document.querySelector(this.getAttribute('href'))
+            .scrollIntoView({ behavior: 'smooth' });
+        });
+      }
     });
+
+    // popup video modal
+    const logo = document.getElementById("logoVideo");
+    const modal = document.getElementById("videoModal");
+    const video = document.getElementById("popupVideo");
+    const closeBtn = document.getElementById("closeBtn");
+
+    logo.onclick = () => {
+      modal.style.display = "flex";
+      video.play();
+    };
+
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+      video.pause();
+      video.currentTime = 0;
+    };
+
+    modal.onclick = (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        video.pause();
+        video.currentTime = 0;
+      }
+    };
   </script>
 
 </body>
